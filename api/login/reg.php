@@ -42,7 +42,7 @@
     try{
         $outputData = [
             'success' => true,
-            'inputData' => $inputData,
+            'username' => $username
         ];
         echo json_encode($outputData);
     }
