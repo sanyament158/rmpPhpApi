@@ -4,8 +4,7 @@
     //connect db
     try{
         include '../connection/connection.php';
-    }
-    catch (PDOException $e){
+    } catch (PDOException $e){
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
         exit;
     }
@@ -15,7 +14,6 @@
     
     // from json to assoc array
     $inputData = json_decode($input, true);
-
     $username = $inputData['username'] ?? '';
     $password = $inputData['password'] ?? '';
     
