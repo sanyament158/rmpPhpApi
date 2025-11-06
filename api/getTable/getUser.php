@@ -12,7 +12,7 @@
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		echo json_encode([
-			"success" => true,
+			'success' => true,
 			'data' => $results,
 			'count' => count($results)
 		]);
