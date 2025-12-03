@@ -1,8 +1,8 @@
 <?php
-$host = '79.141.78.35';
+$host = '5.129.192.166';
 $dbname = 'taskmanager';
-$username = 'remoteUser';
-$password = 'gogawho';
+$username = 'sanya-remote';
+$password = 'gogachivchan';
 
 try {    
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);  

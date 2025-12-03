@@ -1,17 +1,1 @@
-inner joins for getTable/getTasks (human-readable values)
-
-use taskmanager;
-select 
-	`user`.Username as Owner,
-    `status`.Name as Status,
-    category.Name as Category,
-    importance.Name as Importance,
-    task.Title,
-    task.Description,
-    task.IsComplete 
-from Tasks task 
-    inner join User `user` on task.IdOwner = user.Id
-    inner join TaskStatus `status` on task.IdStatus = status.Id
-    inner join TaskCategory category on task.IdCategory = category.Id
-    inner join TaskImportance importance on task.IdImportance = importance.Id
 

@@ -11,18 +11,17 @@
 		// sql logic
 		$stmt = $pdo->prepare(<<<SQL
 		select 
-		    `user`.Username as Owner,
-		    `status`.Name as Status,
-		    category.Name as Category,
-		    importance.Name as Importance,
-		    task.Title,
-		    task.Description,
-		    task.IsComplete 
-		from Tasks task 
-		    inner join User `user` on task.IdOwner = user.Id
-		    inner join TaskStatus `status` on task.IdStatus = status.Id
-		    inner join TaskCategory category on task.IdCategory = category.Id
-		    inner join TaskImportance importance on task.IdImportance = importance.Id
+		    `user`.username as Owner,
+		    `status`.name as Status,
+		    scope.name as Scope,
+		    importance.name as Importance,
+		    task.title,
+		    task.description
+		from task task 
+		    inner join user `user` on task.idOwner = user.Id
+		    inner join taskStatus `status` on task.idStatus = status.Id
+		    inner join scope scope on task.idScope = scope.id
+		    inner join taskImportance importance on task.idImportance = importance.Id
 		SQL
 		); 
 		$stmt->execute();

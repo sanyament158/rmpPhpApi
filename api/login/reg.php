@@ -28,7 +28,7 @@
 
     // sql logic 
     try{
-        $stmt = $pdo->prepare('INSERT INTO User (Username, Password) VALUES (?, ?)');
+        $stmt = $pdo->prepare('INSERT INTO user (username, password) VALUES (?, ?)');
         $stmt->execute([$username, $password]);
     }
     catch (Exception $e){

@@ -6,7 +6,7 @@
 	header('Content-Type: application/json; charset=utf-8');
 
 	try{
-		$stmt = $pdo->prepare("SELECT * FROM User");
+		$stmt = $pdo->prepare("SELECT * FROM user");
 		$stmt->execute();
 
 		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);

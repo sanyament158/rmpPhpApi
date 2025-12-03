@@ -18,19 +18,19 @@ $password = $input_data['password'] ?? '';
 if (empty(trim($username)) || empty(trim($password))) {
     echo json_encode([
         "success" => false,
-        "message" => "Введите логин и пароль"
+        "message" => "login or password is null or empty"
     ]);
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT Id, Username, Fname, Lname, IdRole, Password FROM User WHERE Username = ?");
+$stmt = $pdo->prepare("SELECT username, idRole, password FROM user WHERE username = ?");
 $stmt->execute([$username]);
 $user_obj = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // validation
 try{
-	if ($password == $user_obj['Password']) {
-	    unset($user_obj['Password']);
+	if ($password == $user_obj['password']) {
+	    unset($user_obj['password']);
 	    echo json_encode([
 		"success" => true,
 		"user" => $user_obj]);
