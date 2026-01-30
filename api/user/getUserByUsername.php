@@ -1,1 +1,27 @@
-<?php                                                                                                   header('Content-Type: application/json; charset=utf-8');                                                try{                                                                                                            include '../connection/connection.php';                                                                                                                                                                         $input = file_get_contents('php://input');                                                              $input_data = json_decode($input, true);                                                                $username = $input_data['username'] ?? '';                                                                                                                                                                            if (empty($username)){                                                                                             echo json_encode(['success' => false, 'error' => 'username was null']);                                    exit;                                                                                           }                                                                                                                                                                                                               $stmt = $pdo->prepare('select * from user where username = ?');                                            $stmt->execute([$username]);                                                                               $results = $stmt->fetch(PDO::FETCH_ASSOC);                                                              echo json_encode(['success' => true, 'data' => $results]);                                      }                                                                                                       catch (PDOException $ex){                                                                                       http_response_code(500);                                                                                echo json_encode(['success' => false, 'error' => $ex->getMessage()]);                           }                                                                                                       ?> 
+<?php
+header('Content-Type: application/json; charset=utf-8');
+
+try {
+	    include '../connection/connection.php';
+
+	        $input = file_get_contents('php://input');
+	        $input_data = json_decode($input, true);
+		    $username = $input_data['username'] ?? '';
+
+		    if (empty($username)) {
+			            echo json_encode(['success' => false, 'error' => 'username was null']);
+				            exit;
+				        }
+
+		        $stmt = $pdo->prepare('select * from user where username = ?');
+		        $stmt->execute([$username]);
+			    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			    echo json_encode(['success' => true, 'data' => $results]);
+
+} catch (PDOException $ex) {
+	    http_response_code(500);
+	        echo json_encode(['success' => false, 'error' => $ex->getMessage()]);
+}
+?>
+

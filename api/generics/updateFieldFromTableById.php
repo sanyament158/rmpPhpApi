@@ -2,7 +2,7 @@
 header('Content-Type: application/json, charset=utf8');
 
 try {
-	include 'connection/connection.php';
+	include '../connection/connection.php';
 
 	$input = file_get_contents('php://input');
 	$input_data = json_decode($input, true);
