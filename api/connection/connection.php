@@ -1,5 +1,5 @@
 <?php
-$host = '5.129.192.166';
+$host = '5.129.192.69';
 $dbname = 'taskmanager';
 $username = 'sanya-remote';
 $password = 'gogachivchan';
