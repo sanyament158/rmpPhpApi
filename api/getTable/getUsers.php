@@ -8,9 +8,12 @@ select u.id as Id,
 u.username as Username,
 u.lname as Lname,
 u.idRole as RoleId,
-r.name as RoleName
+r.name as RoleName,
+u.idSex as SexId,
+s.name as SexName
 from user u
-inner join role r on r.id = u.idRole;
+inner join role r on r.id = u.idRole
+left join sex s on u.idSex = s.id;
 SQL);
 	$stmtUsers->execute();
 	$resultsUsers = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);

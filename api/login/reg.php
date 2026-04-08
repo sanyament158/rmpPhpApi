@@ -16,6 +16,9 @@
     $inputData = json_decode($input, true);
     $username = $inputData['username'] ?? '';
     $password = $inputData['password'] ?? '';
+    $idRole = $inputData['idRole'] ?? '';
+    $lname = $inputData['lname'] ?? '';
+
     
     if (empty(trim($username)) || empty(trim($password))){
         throw new Exception('any field is empty');
@@ -25,17 +28,14 @@
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new Exception('Ошибка декодирования JSON: ' . json_last_error_msg());
     }
-
     // sql logic 
     try{
-        $stmt = $pdo->prepare('INSERT INTO user (username, password) VALUES (?, ?)');
-        $stmt->execute([$username, $password]);
+        $stmt = $pdo->prepare('INSERT INTO user (username, password, idRole, lname) VALUES (?, ?, ?, ?)');
+        $stmt->execute([$username, $password, $idRole, $lname]);
     }
-    catch (Exception $e){
+    catch (Exception $e)
         die(json_encode(['success' => false, 'error' => $e->getMessage()]));
-    }
-
-    
+    }  
     // put output data
     try{
         $outputData = [
@@ -47,7 +47,4 @@
     catch (PDOException $e){
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
-    
-
-
-?>
+ ?>
