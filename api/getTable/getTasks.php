@@ -17,7 +17,8 @@ t.description as Description,
 t.idScope as IdScope,
 s.name as ScopeName,
 t.since as Since,
-t.deadline as Deadline 
+t.deadline as Deadline,
+t.idUserTaked
 from task t
 inner join user u on u.id = t.idOwner
 inner join role r on r.id = u.idRole
